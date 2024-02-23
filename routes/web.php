@@ -26,7 +26,6 @@ Route::prefix('app')->group(function(){
     Route::get('/abatidos',function(){ return 'Animais Abatidos';})->name('app.abatidos');
     Route::get('/cadastroSintomasDoenca',function(){ return 'Sintomas';})->name('app.sintomas');
 });
-Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('site.teste');
 
 Route::fallback(function() {
     echo 'A rota acessada não existe. <a href="'.route('site.index').'">Clique aqui</a> para ir a pagina Inicial!!';
