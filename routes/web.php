@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::get('/', 'PrincipalController@principal')->name('site.index');    
 Route::get('/sobre-nos', 'SobreNosController@sobrenos')->name('site.sobrenos');
 Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 Route::get('/login',function(){ return 'login';})->name('site.login');
 
-Route::prefix('app')->group(function(){
+Route::middleware('autenticacao')->prefix('app')->group(function(){
     Route::get('/cadastroovelhas', 'CadastroOvelhasController@index')->name('app.cadastro');
     Route::get('/alaveterinaria',function(){ return ' Ala Veterinaria';})->name('app.alaveterinaria');
     Route::get('/abate',function(){ return 'Animais para Abate';})->name('app.abates');
