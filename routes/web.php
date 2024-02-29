@@ -16,16 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PrincipalController@principal')->name('site.index');    
 Route::get('/sobre-nos', 'SobreNosController@sobrenos')->name('site.sobrenos');
+
 Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
-Route::get('/login',function(){ return 'login';})->name('site.login');
 
-Route::middleware('autenticacao')->prefix('app')->group(function(){
-    Route::get('/cadastroovelhas', 'CadastroOvelhasController@index')->name('app.cadastro');
-    Route::get('/alaveterinaria',function(){ return ' Ala Veterinaria';})->name('app.alaveterinaria');
-    Route::get('/abate',function(){ return 'Animais para Abate';})->name('app.abates');
-    Route::get('/abatidos',function(){ return 'Animais Abatidos';})->name('app.abatidos');
-    Route::get('/cadastroSintomasDoenca',function(){ return 'Sintomas';})->name('app.sintomas');
+Route::get('/login/{erro?}', 'LoginController@index')->name('site.login');
+Route::post('/login', 'LoginController@autenticar')->name('site.login');
+
+Route::middleware('autenticacao:padrao')->prefix('app')->group(function(){
+    Route::get('/home', 'HomeController@index')->name('app.home');
+    Route::get('/sair', 'LoginController@sair')->name('app.sair');
+    Route::get('/cadastroovelha', 'CadastroOvelhasController@index')->name('app.cadastroovelha');
+    Route::get('/alaveterinaria','AlaVeterinariaController@index')->name('app.alaveterinaria');
+    Route::get('/abate','AbateController@index')->name('app.abate');
+    Route::get('/abatido','AbatidaController@index')->name('app.abatido');
+    Route::get('/cadastrosintomadoenca','CadastroSintomaController@index')->name('app.cadastrosintomadoenca');
 });
 
 Route::fallback(function() {

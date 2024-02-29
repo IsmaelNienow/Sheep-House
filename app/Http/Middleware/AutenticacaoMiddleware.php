@@ -13,9 +13,14 @@ class AutenticacaoMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $metodo_autenticacao)
     {
-        //return $next($request);
-        return Response('Acesso negado! Rota exige autenticação!!!');
+        session_start();
+
+        if(isset($_SESSION['email']) && $_SESSION['email']  != ''){
+            return $next($request);
+        } else {
+            return redirect()-route('site.login',['erro' => 2]);
+        }
     }
 }
