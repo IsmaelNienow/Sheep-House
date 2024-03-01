@@ -57,7 +57,7 @@ class CadastroOvelhasController extends Controller
             $msg = 'Cadastro realizado com sucesso';
         }
 
-     return view('app.ovelhas.adicionar' ['msg' => $msg]);
+     return view('app.ovelhas.adicionar',[ 'msg' => $msg]);
 
     }
 }
