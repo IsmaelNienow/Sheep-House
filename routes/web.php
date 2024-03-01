@@ -26,7 +26,12 @@ Route::post('/login', 'LoginController@autenticar')->name('site.login');
 Route::middleware('autenticacao:padrao')->prefix('app')->group(function(){
     Route::get('/home', 'HomeController@index')->name('app.home');
     Route::get('/sair', 'LoginController@sair')->name('app.sair');
+
     Route::get('/cadastroovelha', 'CadastroOvelhasController@index')->name('app.cadastroovelha');
+    Route::post('/cadastroovelha/listar', 'CadastroOvelhasController@listar')->name('app.cadastroovelha.listar');
+    Route::get('/cadastroovelha/adicionar', 'CadastroOvelhasController@adicionar')->name('app.cadastroovelha.adicionar');
+    Route::post('/cadastroovelha/adicionar', 'CadastroOvelhasController@adicionar')->name('app.cadastroovelha.adicionar');
+
     Route::get('/alaveterinaria','AlaVeterinariaController@index')->name('app.alaveterinaria');
     Route::get('/abate','AbateController@index')->name('app.abate');
     Route::get('/abatido','AbatidaController@index')->name('app.abatido');
