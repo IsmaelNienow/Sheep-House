@@ -11,15 +11,28 @@ class CadastroOvelhasController extends Controller
         return view('app.ovelhas.index');
     }
 
-    public function listar() {
-        return view('app.ovelhas.listar');
+    public function listar(Request $request) {
+
+            $ovelhas = Ovelha::where('brinco', 'like', '%'.$request->input('brinco').'%')
+            ->where('raca', 'like', '%'.$request->input('raca').'%')
+            ->where('data_nascimento', 'like', '%'.$request->input('data_nascimento').'%')
+            ->where('pai', 'like', '%'.$request->input('pai').'%')
+            ->where('mae', 'like', '%'.$request->input('mae').'%')
+            ->where('total_cria', 'like', '%'.$request->input('total_cria').'%')
+            ->where('gemeas', 'like', '%'.$request->input('gemeas').'%')
+            ->where('abate', 'like', '%'.$request->input('abate').'%')
+            ->where('abatida', 'like', '%'.$request->input('abatida').'%')
+            ->where('doente', 'like', '%'.$request->input('doente').'%')
+        
+        ->get();
+        return view('app.ovelhas.listar', ['ovelhas' => $ovelhas]);
     }
 
     public function adicionar(Request $request) {
 
         $msg = '';
-
-        if($request->input('_token') != ''){
+        //inclusão
+        if($request->input('_token') != '' && $request->input('id') == '') {
             //validação
             $regras=[
                 "brinco" => 'required|min:2' ,
@@ -29,7 +42,6 @@ class CadastroOvelhasController extends Controller
                 "mae"=>'required|min:3|max:40',
                 "total_cria" =>'required',
                 "gemeas" =>'required',
-                "abate" =>'required',
                 "abate" =>'required',
                 "abatida" =>'required',
                 "doente" =>'required'
@@ -57,7 +69,30 @@ class CadastroOvelhasController extends Controller
             $msg = 'Cadastro realizado com sucesso';
         }
 
-     return view('app.ovelhas.adicionar',[ 'msg' => $msg]);
+        //Edição
+        if($request->input('_token') != '' && $request->input('id') != '') {
+            $ovelha = Ovelha::find($request->input('id'));
+            $update = $ovelha->update($request->all());
 
+            if($update){
+                $msg = 'Dados atualizados com sucesso';
+            } else{
+                $msg = 'Erro ao tentar alterar o registro';
+            }
+
+            return redirect()->route('app.cadastroovelha.editar', ['id' => $request->input('id'), 'msg' => $msg]);
+
+        }
+
+        return view('app.ovelhas.adicionar',[ 'msg' => $msg]);
+
+    }
+
+    public function editar($id, $msg = ''){
+
+        $ovelha = Ovelha::find($id);
+
+        return view('app.ovelhas.adicionar',['ovelha' => $ovelha, 'msg' => $msg]);
+        
     }
 }

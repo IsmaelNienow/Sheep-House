@@ -31,6 +31,7 @@ Route::middleware('autenticacao:padrao')->prefix('app')->group(function(){
     Route::post('/cadastroovelha/listar', 'CadastroOvelhasController@listar')->name('app.cadastroovelha.listar');
     Route::get('/cadastroovelha/adicionar', 'CadastroOvelhasController@adicionar')->name('app.cadastroovelha.adicionar');
     Route::post('/cadastroovelha/adicionar', 'CadastroOvelhasController@adicionar')->name('app.cadastroovelha.adicionar');
+    Route::get('/cadastroovelha/editar/{id}/{msg?}', 'CadastroOvelhasController@editar')->name('app.cadastroovelha.editar');
 
     Route::get('/alaveterinaria','AlaVeterinariaController@index')->name('app.alaveterinaria');
     Route::get('/abate','AbateController@index')->name('app.abate');
