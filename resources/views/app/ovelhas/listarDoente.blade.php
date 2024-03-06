@@ -1,19 +1,21 @@
 @extends('app.layouts.basico')
 
-@section('titulo','cadastroovelha')
+@section('titulo','alaveterinaria')
 
 @section('conteudo')
 
     <div class="conteudo-pagina">
 
         <div class="titulo-pagina-2">
-            <p>Cadastro Ovelhas - Lista das Ovelhas</p>
+            <p>Ala Veterinaria</p>
         </div>
 
         <div class="menu">
             <ul>
                 <li><a href="{{ route('app.cadastroovelha.adicionar')}}">Novo</a></li>
                 <li><a href="{{ route('app.cadastroovelha')}}">Consulta</a></li>
+                
+
             </ul>
         </div>
 
@@ -36,7 +38,6 @@
                             <th></th>                     
                         </tr>
                     </thead>
-                    
                     <tbody>
                         @foreach ($ovelhas as $ovelha)
                             <tr>
@@ -50,15 +51,15 @@
                                 <td>{{ $ovelha->abate}}</td>
                                 <td>{{ $ovelha->abatida}}</td>
                                 <td>{{ $ovelha->doente}}</td>
-                                <td><a href="{{ route('app.cadastroovelha.excluir', $ovelha->id) }}">Excluir</a></td>
+                                <td><a href="{{ route('app.cadastroovelha.excluir', $ovelha->id) }}">Cadastrar Sintomas</a></td>
                                 <td><a href="{{ route('app.cadastroovelha.editar', $ovelha->id) }}">Editar</a></td>
                             </tr>
                         @endforeach
-                    </tbody>
+                    </tbody>                   
                 </table>
-                {{ $ovelhas->appends($request)->links() }}
+                    {{ $ovelhas->appends($request)->links() }}
                 <br>
-                Exibindo {{ $ovelhas->count() }} ovelhas de {{ $ovelhas->total() }}               
+                    Exibindo {{ $ovelhas->count() }} ovelhas de {{ $ovelhas->total() }}                                   
             </div>
         </div>
 

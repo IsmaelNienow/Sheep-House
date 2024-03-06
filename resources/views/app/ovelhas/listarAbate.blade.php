@@ -1,13 +1,13 @@
 @extends('app.layouts.basico')
 
-@section('titulo','cadastroovelha')
+@section('titulo','abate')
 
 @section('conteudo')
 
     <div class="conteudo-pagina">
 
         <div class="titulo-pagina-2">
-            <p>Cadastro Ovelhas - Lista das Ovelhas</p>
+            <p>Lista das Ovelhas para Abate</p>
         </div>
 
         <div class="menu">
@@ -36,7 +36,6 @@
                             <th></th>                     
                         </tr>
                     </thead>
-                    
                     <tbody>
                         @foreach ($ovelhas as $ovelha)
                             <tr>
@@ -54,11 +53,11 @@
                                 <td><a href="{{ route('app.cadastroovelha.editar', $ovelha->id) }}">Editar</a></td>
                             </tr>
                         @endforeach
-                    </tbody>
+                    </tbody>                   
                 </table>
-                {{ $ovelhas->appends($request)->links() }}
+                    {{ $ovelhas->appends($request)->links() }}
                 <br>
-                Exibindo {{ $ovelhas->count() }} ovelhas de {{ $ovelhas->total() }}               
+                    Exibindo {{ $ovelhas->count() }} ovelhas de {{ $ovelhas->total() }}                                   
             </div>
         </div>
 

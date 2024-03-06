@@ -24,13 +24,13 @@
                     <input type="text" name="brinco" placeholder="Brinco" class="borda-preta">
                     <input type="text" name="raca" placeholder="Raça" class="borda-preta">
                     <input type="text" name="data_nascimento" placeholder="Data de Nascimento" class="borda-preta">
-                    <input type="text" name="pai" placeholder="Pai" class="borda-preta">
-                    <input type="text" name="mae" placeholder="Mae" class="borda-preta">
+                    <input type="text" name="pai" placeholder="Raça do Pai" class="borda-preta">
+                    <input type="text" name="mae" placeholder="Raça da Mae" class="borda-preta">
                     <input type="text" name="total_cria" placeholder="Total de Crias" class="borda-preta">
-                    <input type="text" name="gemeas" placeholder="Possui Irma Gemea" class="borda-preta">
-                    <input type="text" name="abate" placeholder="Para Abate" class="borda-preta">
-                    <input type="text" name="abatida" placeholder="Foi Abatida" class="borda-preta">
-                    <input type="text" name="doente" placeholder="Esta ou possui uma Doença" class="borda-preta">
+                    <input type="text" name="gemeas" placeholder="Possui Irma Gemea ?" class="borda-preta">
+                    <input type="text" name="abate" placeholder="Para Abate ?" class="borda-preta">
+                    <input type="text" name="abatida" placeholder="Foi Abatida ?" class="borda-preta">
+                    <input type="text" name="doente" placeholder="Esta ou possui uma Doença ?" class="borda-preta">
                     <button type="submit" class="borda-preta">Pesquisar</button>
                 <form>
             </div>

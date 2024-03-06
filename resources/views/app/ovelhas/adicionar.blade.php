@@ -32,10 +32,10 @@
                     <input type="text" name="data_nascimento" value="{{ $ovelha->data_nascimento ?? old('data_nascimento')}}" placeholder="Data de Nascimento" class="borda-preta">
                     {{ $errors->has('data_nascimento') ? $errors->first('data_nascimento'): ''}}
 
-                    <input type="text" name="pai" value="{{ $ovelha->pai ?? old('pai')}}" placeholder="Pai" class="borda-preta">
+                    <input type="text" name="pai" value="{{ $ovelha->pai ?? old('pai')}}" placeholder="Raça do Pai" class="borda-preta">
                     {{ $errors->has('pai') ? $errors->first('pai'): ''}}
 
-                    <input type="text" name="mae" value="{{ $ovelha->mae ?? old('mae')}}" placeholder="Mãe" class="borda-preta">
+                    <input type="text" name="mae" value="{{ $ovelha->mae ?? old('mae')}}" placeholder="Raça da Mãe" class="borda-preta">
                     {{ $errors->has('mae') ? $errors->first('mae'): ''}}
 
                     <input type="text" name="total_cria" value="{{ $ovelha->total_cria ?? old('total_cria')}}" placeholder="Total de Crias" class="borda-preta">

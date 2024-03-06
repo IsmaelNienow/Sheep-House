@@ -22,10 +22,10 @@ class CadastroOvelhasController extends Controller
             ->where('gemeas', 'like', '%'.$request->input('gemeas').'%')
             ->where('abate', 'like', '%'.$request->input('abate').'%')
             ->where('abatida', 'like', '%'.$request->input('abatida').'%')
-            ->where('doente', 'like', '%'.$request->input('doente').'%')
-        
-        ->get();
-        return view('app.ovelhas.listar', ['ovelhas' => $ovelhas]);
+            ->where('doente', 'like', '%'.$request->input('doente').'%')        
+            ->paginate(2);
+            
+            return view('app.ovelhas.listar', ['ovelhas' => $ovelhas, 'request' => $request->all() ]);
     }
 
     public function adicionar(Request $request) {
@@ -94,5 +94,12 @@ class CadastroOvelhasController extends Controller
 
         return view('app.ovelhas.adicionar',['ovelha' => $ovelha, 'msg' => $msg]);
         
+    }
+
+    public function excluir($id) {
+       //Ovelha::find($id)->delete();
+       Ovelha::find($id)->forceDelete();
+
+       return redirect()->route('app.cadastroovelha');
     }
 }
