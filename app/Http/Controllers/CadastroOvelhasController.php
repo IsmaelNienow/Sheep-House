@@ -13,7 +13,8 @@ class CadastroOvelhasController extends Controller
 
     public function listar(Request $request) {
 
-            $ovelhas = Ovelha::where('brinco', 'like', '%'.$request->input('brinco').'%')
+            $ovelhas = Ovelha::where('id', 'like', '%'.$request->input('brinco').'%')
+            ->where('brinco', 'like', '%'.$request->input('brinco').'%')
             ->where('raca', 'like', '%'.$request->input('raca').'%')
             ->where('data_nascimento', 'like', '%'.$request->input('data_nascimento').'%')
             ->where('pai', 'like', '%'.$request->input('pai').'%')
@@ -102,4 +103,6 @@ class CadastroOvelhasController extends Controller
 
        return redirect()->route('app.cadastroovelha');
     }
+
+
 }

@@ -22,7 +22,7 @@ class CreateHistoricoVeterinarioTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_ovelha')->references('id')->on('ovelhas');
-            $table->unique('id_ovelha');
+            
         });
     }
 
