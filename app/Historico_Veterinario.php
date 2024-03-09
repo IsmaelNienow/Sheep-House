@@ -19,5 +19,11 @@ class Historico_Veterinario extends Model
         return date('d/m/Y', strtotime($value));
     }
 
+    public function ovelha()
+    {
+        return $this->belongsTo(Ovelha::class, 'id_ovelha');
+    }
+
+
 }
 

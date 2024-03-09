@@ -52,14 +52,12 @@ use Illuminate\Support\Facades\Route;
     Route::post('/alaveterinaria/listarDoente', 'AlaVeterinariaController@doentelista')->name('app.ovelha.listarDoente');
     Route::get('/alaveterinaria/listarDoente', 'AlaVeterinariaController@doentelista')->name('app.ovelha.listarDoente');
 
-    //Rota Sintomas
-    Route::get('/cadastrosintomadoenca/{id}', 'HistoricoVeterinarioController@cadastrosintomadoenca')->name('app.cadastrosintomadoenca');
-    Route::get('/cadastrosintomadoenca/listasintomas/{id}', 'HistoricoVeterinarioController@listasintomas')->name('app.cadastrosintomadoenca.listasintomas');
+    //Rota cadastra e listar Sintomas
+    Route::get('/cadastrosintomadoenca', 'HistoricoVeterinarioController@cadastrosintomadoenca')->name('app.cadastrosintomadoenca');
+    Route::get('/cadastrosintomadoenca/listasintomas/{id}', 'HistoricoVeterinarioController@cadastrosintomadoenca')->name('app.cadastrosintomadoenca.listasintomas');
+    Route::post('/cadastrosintomadoenca/cadastrosintomadoenca/{id}/{sintomaId?}', 'HistoricoVeterinarioController@cadastrosintomadoenca')->name('app.cadastrosintomadoenca.cadastrarSintoma');
     Route::get('/cadastrosintomadoenca/excluir/{id}', 'HistoricoVeterinarioController@excluir')->name('app.cadastrosintomadoenca.excluir');
-    Route::post('/cadastrosintomadoenca/cadastrar/{id}', 'HistoricoVeterinarioController@cadastrarSintoma')->name('app.cadastrosintomadoenca.cadastrar');
-    Route::get('/cadastrosintomadoenca/editar/{id}/{msg?}', 'HistoricoVeterinarioController@editar')->name('app.cadastrosintomadoenca.editar');
     
-
     });
 
     Route::fallback(function() {

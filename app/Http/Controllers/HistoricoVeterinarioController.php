@@ -8,82 +8,69 @@ use App\Ovelha;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 
-
 class HistoricoVeterinarioController extends Controller
 {
-    public function index() {
-
+    public function index(Request $request) {
         return view('app.cadastrosintomadoenca');
-    }    
-
-    public function listasintomas($id, Request $request) {
-        $ovelha = Ovelha::findOrFail($id);
-    
-        $sintomas = historico_veterinario::where('id_ovelha', $id)
-        ->paginate(2);
-    
-        return view('app.cadastrosintomadoenca', ['ovelha' => $ovelha, 'sintomas' => $sintomas, 'request' => $request]);
-    }
-          
-            
-    public function cadastrosintomadoenca(Request $request, $id) {
-        $ovelha = Ovelha::findOrFail($id);
-        $sintomas = historico_veterinario::where('id_ovelha', $id)->paginate(2);
-
-        return view('app.cadastrosintomadoenca', ['ovelha' => $ovelha, 'sintomas' => $sintomas, 'request' => $request]);
     }
 
-    public function cadastrarSintoma(Request $request, $id) {
-        // Valide os dados do formulário
-        $request->validate([
-            'sintoma' => 'required|max:50',
-            'tratamento' => 'required|max:50',
-            'data_tratamento' => 'required|date',
-        ]);
-    
-        $sintoma = new historico_veterinario;
-        $sintoma->id_ovelha = $id;
-        $sintoma->sintomas = $request->input('sintoma');
-        $sintoma->tratamento = $request->input('tratamento');
-        $sintoma->data_tratamento = $request->input('data_tratamento');
-        
-        $sintoma->save();
-    
-        // Redirecione de volta para a mesma página com uma mensagem de sucesso
-        return Redirect::back()->with('success', 'Sintoma cadastrado com sucesso!');
+    public function cadastrosintomadoenca(Request $request, $id, $sintomaId = null) {
+        $msg = '';
+        $ovelha = Ovelha::findOrFail($id);
+        $sintomas = historico_veterinario::where('id_ovelha', $id)->paginate(5);
+        $sintomaParaEditar = null;
 
-        //Edição
-        if($request->input('_token') != '' && $request->input('id') != '') {
-            $sintoma = historico_veterinario::find($request->input('id'));
-            $update = $sintoma->update($request->all());
+        if ($sintomaId) {
+            $sintomaParaEditar = historico_veterinario::find($sintomaId);
+        }
 
-            if($update){
+        if ($request->isMethod('post')) {
+            // Validação
+            $regras = [
+                "sintomas" => 'required|max:50',
+                "tratamento" => 'required|max:50',
+                "data_tratamento" => 'required'
+            ];
+
+            $feedback = [
+                'required' => 'O campo :attribute deve ser preenchido',
+                'sintomas.max' => 'O campo deve ter no máximo 40 caracteres',
+                'tratamento.max' => 'O campo deve ter no máximo 40 caracteres'
+            ];
+
+            $request->validate($regras, $feedback);
+
+            if ($sintomaId) {
+                // Atualização do sintoma existente
+                $sintoma = historico_veterinario::find($sintomaId);
+                $sintoma->update($request->all());
                 $msg = 'Dados atualizados com sucesso';
-            } else{
-                $msg = 'Erro ao tentar alterar o registro';
+            } else {
+                // Criação do sintoma com associação à ovelha
+                $sintoma = new historico_veterinario($request->all());
+                $sintoma->id_ovelha = $id;
+                $sintoma->save();
+                $msg = 'Cadastro realizado com sucesso';
             }
 
-            return redirect()->route('app.cadastrosintomadoenca.cadastrar', ['id' => $request->input('id'), 'msg' => $msg]);
-
+            // Redireciona após salvar o item
+            return redirect()->route('app.cadastrosintomadoenca.listasintomas', ['id' => $id, 'msg' => $msg]);
         }
+
+        // Restante do código permanece o mesmo
+        return view('app.cadastrosintomadoenca', [
+            'ovelha' => $ovelha,
+            'sintomas' => $sintomas,
+            'request' => $request,
+            'msg' => $msg,
+            'sintomaParaEditar' => $sintomaParaEditar,
+        ]);
     }
 
     public function excluir(Request $request, $id) {
-        try {
-            // Lógica para excluir o registro da tabela historico_veterinario
-            DB::table('historico_veterinario')->where('id', $id)->delete();
-    
-            // Redirecione para a rota da lista de sintomas com uma mensagem de sucesso
-            return redirect()->route('app.cadastrosintomadoenca', ['id' => $request->id_ovelha])
-                ->with('success', 'Registro excluído com sucesso.');
-        } catch (\Exception $e) {
-            // Em caso de erro, redirecione com uma mensagem de erro
-            return redirect()->route('app.cadastrosintomadoenca', ['id' => $request->id_ovelha])
-                ->with('error', 'Erro ao excluir o registro.');
-        }
+        historico_veterinario::find($id)->forceDelete();
+
+        return redirect()->route('app.cadastrosintomadoenca.listasintomas', ['id' => $request->id_ovelha])
+               ->with('success', 'Registro excluído com sucesso.');
     }
-
-    
-
-
 }
