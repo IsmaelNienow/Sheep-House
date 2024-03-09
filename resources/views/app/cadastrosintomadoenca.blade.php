@@ -21,7 +21,7 @@
                 <!-- Formulário para cadastrar/editar sintomas -->
                 <form action="{{ route('app.cadastrosintomadoenca.cadastrarSintoma', ['id' => $ovelha->id, 'sintomaId' => $sintomas->id ?? null]) }}" method="post">
                     @csrf
-                    <input type="text" name="sintomas" value="{{ $sintomas->sintoma ?? old('sintomas')}}" placeholder="Sintoma" class="borda-preta">
+                    <input type="text" name="sintomas" value="{{ $sintomas->sintomas ?? old('sintomas')}}" placeholder="Sintoma" class="borda-preta">
                     {{ $errors->has('sintomas') ? $errors->first('sintomas'): ''}}
 
                     <input type="text" name="tratamento" value="{{ $sintomas->tratamento ?? old('tratamento')}}" placeholder="Tratamento realizado" class="borda-preta">
@@ -29,7 +29,8 @@
 
                     <input type="text" name="data_tratamento" value="{{ $sintomas->data_tratamento ?? old('data_tratamento')}}" placeholder="Data do tratamento" class="borda-preta">
                     {{ $errors->has('data_tratamento') ? $errors->first('data_tratamento'): ''}}
-                    <button type="submit">Cadastrar/Editar Sintoma</button>
+
+                    <button type="submit">{{ isset($sintomas->id) ? 'Editar' : 'Cadastrar' }} Sintoma</button>
                 </form>
             </div>
 
