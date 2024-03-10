@@ -86,6 +86,18 @@ class SintomaController extends Controller
         return view('app.ovelhas.adicionarSintoma', ['sintomas' => $sintoma]);
     }
     
-       
+    public function excluirsintoma($id) {
+        //Ovelha::find($id)->delete();
+        $sintoma = historico_veterinario::find($id);
+        print_r($sintoma);
+      if (!$sintoma) {
+            return redirect()->route('app.ovelhas.listarSintoma')->with('erro', 'Sintoma não encontrado.');
+        }
+      else{
+            historico_veterinario::find($id)->forceDelete();
+        }       
+ 
+        return redirect()->route('app.ovelhas.listarSintoma');
+     }   
     
 }
