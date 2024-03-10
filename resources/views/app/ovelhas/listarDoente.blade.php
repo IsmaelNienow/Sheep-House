@@ -42,7 +42,7 @@
                                 <td>{{ $ovelha->abate}}</td>
                                 <td>{{ $ovelha->abatida}}</td>
                                 <td>{{ $ovelha->doente}}</td>
-                                <td><a href="{{ route('app.ovelha.listarSintoma', $ovelha->id) }}">Ver Sintomas</a></td>
+                                <td><a href="{{ route('app.ovelhas.listarSintoma', $ovelha->id) }}">Ver Sintomas</a></td>
                                 <td><a href="{{ route('app.cadastroovelha.editar', $ovelha->id) }}">Editar</a></td>
                             </tr>
                         @endforeach

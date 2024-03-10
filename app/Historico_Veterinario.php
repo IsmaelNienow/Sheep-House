@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Ovelha;
 
 class Historico_Veterinario extends Model
 {

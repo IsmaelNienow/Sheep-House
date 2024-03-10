@@ -38,28 +38,28 @@ use Illuminate\Support\Facades\Route;
     Route::get('/cadastroovelha/excluir/{id}', 'CadastroOvelhasController@excluir')->name('app.cadastroovelha.excluir');
   
     //Rota para lista de ovelhas para abate
-    Route::get('/abate', 'AbateController@abatelista')->name('app.ovelha.abate');
-    Route::post('/abate/listarAbate', 'AbateController@abatelista')->name('app.ovelha.listarAbate');
-    Route::get('/abate/listarAbate', 'AbateController@abatelista')->name('app.ovelha.listarAbate');
+    Route::get('/abate', 'AbateController@abatelista')->name('app.ovelhas.abate');
+    Route::post('/abate/listarAbate', 'AbateController@abatelista')->name('app.ovelhas.listarAbate');
+    Route::get('/abate/listarAbate', 'AbateController@abatelista')->name('app.ovelhas.listarAbate');
 
     //Rota para lista de Ovelhas abatidas
-    Route::get('/abatido','AbatidaController@abatidalista')->name('app.ovelha.abatido');
-    Route::post('/abatido/listarAbatida', 'AbatidaController@abatidalista')->name('app.ovelha.listarAbatida');
-    Route::get('/abatido/listarAbatida', 'AbatidaController@abatidalista')->name('app.ovelha.listarAbatida');
+    Route::get('/abatido','AbatidaController@abatidalista')->name('app.ovelhas.abatido');
+    Route::post('/abatido/listarAbatida', 'AbatidaController@abatidalista')->name('app.ovelhas.listarAbatida');
+    Route::get('/abatido/listarAbatida', 'AbatidaController@abatidalista')->name('app.ovelhas.listarAbatida');
 
     //Listar Ovelhas Doentes
-    Route::get('/alaveterinaria','AlaVeterinariaController@doentelista')->name('app.ovelha.alaveterinaria');
-    Route::post('/alaveterinaria/listarDoente', 'AlaVeterinariaController@doentelista')->name('app.ovelha.listarDoente');
-    Route::get('/alaveterinaria/listarDoente', 'AlaVeterinariaController@doentelista')->name('app.ovelha.listarDoente');
+    Route::get('/alaveterinaria','AlaVeterinariaController@doentelista')->name('app.ovelhas.alaveterinaria');
+    Route::post('/alaveterinaria/listarDoente', 'AlaVeterinariaController@doentelista')->name('app.ovelhas.listarDoente');
+    Route::get('/alaveterinaria/listarDoente', 'AlaVeterinariaController@doentelista')->name('app.ovelhas.listarDoente');
 
     //Rota cadastrar e listar Sintomas
-    Route::get('/sintoma/{id}','SintomaController@sintomalista')->name('app.ovelha.sintoma');
-    Route::get('/sintoma/adicionarSintoma/{id}', 'SintomaController@adicionarsintoma')->name('app.ovelha.adicionarSintoma');
-    Route::post('/sintoma/adicionarSintoma/{id}', 'SintomaController@adicionarsintoma')->name('app.ovelha.adicionarSintoma'); 
-    Route::post('/sintoma/listarSintoma/{id}', 'SintomaController@sintomalista')->name('app.ovelha.listarSintoma');
-    Route::get('/sintoma/listarSintoma/{id}', 'SintomaController@sintomalista')->name('app.ovelha.listarSintoma');
-    Route::get('/sintoma/editarSintoma/{id}', 'SintomaController@editarSintoma')->name('app.ovelha.editarSintoma');
-    Route::get('/sintoma/excluirSintoma/{id}', 'SintomaController@excluirsintoma')->name('app.ovelha.excluirSintoma');
+    Route::get('/sintoma','SintomaController@sintomalista')->name('app.ovelhas.sintoma');
+    Route::get('/sintoma/adicionarSintoma/{id}', 'SintomaController@adicionarsintoma')->name('app.ovelhas.adicionarSintoma');
+    Route::post('/sintoma/adicionarSintoma/{id}', 'SintomaController@adicionarsintoma')->name('app.ovelhas.adicionarSintoma'); 
+    Route::post('/sintoma/listarSintoma/{id}', 'SintomaController@sintomalista')->name('app.ovelhas.listarSintoma');
+    Route::get('/sintoma/listarSintoma/{id}', 'SintomaController@sintomalista')->name('app.ovelhas.listarSintoma');
+    Route::get('/sintoma/editarSintoma/{id}', 'SintomaController@editarsintoma')->name('app.ovelhas.editarSintoma');
+    Route::get('/sintoma/excluirSintoma/{id}', 'SintomaController@excluirsintoma')->name('app.ovelhas.excluirSintoma');
     
  
     });

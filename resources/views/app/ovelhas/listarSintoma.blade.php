@@ -12,8 +12,8 @@
 
         <div class="menu">
             <ul>
-                <li><a href="{{ route('app.ovelha.adicionarSintoma', ['id' => optional($ovelhas)->id]) }}">Cadastrar Sintoma</a></li>
-                <li><a href="{{ route('app.ovelha.listarDoente')}}">Voltar</a></li>
+                <li><a href="{{ route('app.ovelhas.adicionarSintoma', ['id' => optional($ovelhas)->id]) }}">Cadastrar Sintoma</a></li>
+                <li><a href="{{ route('app.ovelhas.listarDoente')}}">Voltar</a></li>
             </ul>
         </div>
 
@@ -40,8 +40,8 @@
                                 <td>{{ $sintoma->sintomas }}</td>
                                 <td>{{ $sintoma->tratamento }}</td>
                                 <td>{{ $sintoma->data_tratamento }}</td>
-                                <td><a href="{{ route('app.ovelha.excluirSintoma', ['id' => $sintoma->ovelha->id]) }}" onclick="return confirm('Tem certeza que deseja excluir este sintoma?')">Excluir</a></td>
-                                <td><a href="{{ route('app.ovelha.editarSintoma', ['id' => $sintoma->id]) }}" onclick="return confirm('Tem certeza que deseja editar este sintoma?')">Editar</a></td>
+                                <td><a href="{{ route('app.ovelhas.excluirSintoma', ['id' => $sintoma->id]) }}" onclick="return confirm('Tem certeza que deseja excluir este sintoma?')">Excluir</a></td>
+                                <td><a href="{{ route('app.ovelhas.editarSintoma', ['id' => $sintoma->id]) }}" onclick="return confirm('Tem certeza que deseja editar este sintoma?')">Editar</a></td>
                             </tr>
                         @endforeach
                     </tbody>

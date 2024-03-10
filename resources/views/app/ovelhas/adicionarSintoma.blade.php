@@ -12,14 +12,14 @@
 
         <div class="menu">
             <ul>
-                <a href="{{ route('app.ovelha.listarSintoma', ['id' => $ovelha->id ?? '']) }}">Voltar para Listagem de Sintomas</a>
+                <a href="{{ route('app.ovelhas.listarSintoma', ['id' => $ovelha->id ?? '']) }}">Voltar para Listagem de Sintomas</a>
             </ul>
         </div>
 
         <div class="informacao-pagina">
             {{ $msg ?? '' }}
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
-                <form method="post" action="{{ route('app.ovelha.adicionarSintoma', ['id' => $ovelha->id ?? '']) }}">
+                <form method="post" action="{{ route('app.ovelhas.adicionarSintoma', ['id' => $ovelha->id ?? '']) }}">
                     <input type="hidden" name="id" value="{{ $sintoma->id ?? '' }}" >
                     @csrf
                     <input type="text" name="sintomas" value="{{ $sintoma->sintomas ?? old('sintoma')}}" placeholder="Sintomas" class="borda-preta">
