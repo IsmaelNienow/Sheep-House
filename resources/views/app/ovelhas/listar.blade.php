@@ -7,7 +7,7 @@
     <div class="conteudo-pagina">
 
         <div class="titulo-pagina-2">
-            <p>Cadastro Ovelhas - Lista das Ovelhas</p>
+            <p>Lista das Ovelhas</p>
         </div>
 
         <div class="menu">

@@ -32,7 +32,6 @@
                             <th>Abate</th>
                             <th>Abatida</th>
                             <th>Doente</th>
-                            <th></th>
                             <th></th>                     
                         </tr>
                     </thead>
@@ -49,7 +48,6 @@
                                 <td>{{ $ovelha->abate}}</td>
                                 <td>{{ $ovelha->abatida}}</td>
                                 <td>{{ $ovelha->doente}}</td>
-                                <td><a href="{{ route('app.cadastroovelha.excluir', $ovelha->id) }}">Excluir</a></td>
                                 <td><a href="{{ route('app.cadastroovelha.editar', $ovelha->id) }}">Editar</a></td>
                             </tr>
                         @endforeach

@@ -10,15 +10,6 @@
             <p>Ala Veterinaria</p>
         </div>
 
-        <div class="menu">
-            <ul>
-                <li><a href="{{ route('app.cadastroovelha.adicionar')}}">Novo</a></li>
-                <li><a href="{{ route('app.cadastroovelha')}}">Consulta</a></li>
-                
-
-            </ul>
-        </div>
-
         <div class="informacao-pagina">
             <div style="width: 90%; margin-left: auto; margin-right: auto;">
                 <table border="1" width="100%">
@@ -51,7 +42,7 @@
                                 <td>{{ $ovelha->abate}}</td>
                                 <td>{{ $ovelha->abatida}}</td>
                                 <td>{{ $ovelha->doente}}</td>
-                                <td><a href="{{ route('app.cadastrosintomadoenca.listasintomas', $ovelha->id) }}">Cadastrar Sintomas</a></td>
+                                <td><a href="{{ route('app.ovelha.listarSintoma', $ovelha->id) }}">Ver Sintomas</a></td>
                                 <td><a href="{{ route('app.cadastroovelha.editar', $ovelha->id) }}">Editar</a></td>
                             </tr>
                         @endforeach

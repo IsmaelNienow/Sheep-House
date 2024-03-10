@@ -52,12 +52,16 @@ use Illuminate\Support\Facades\Route;
     Route::post('/alaveterinaria/listarDoente', 'AlaVeterinariaController@doentelista')->name('app.ovelha.listarDoente');
     Route::get('/alaveterinaria/listarDoente', 'AlaVeterinariaController@doentelista')->name('app.ovelha.listarDoente');
 
-    //Rota cadastra e listar Sintomas
-    Route::get('/cadastrosintomadoenca', 'HistoricoVeterinarioController@cadastrosintomadoenca')->name('app.cadastrosintomadoenca');
-    Route::get('/cadastrosintomadoenca/listasintomas/{id}', 'HistoricoVeterinarioController@cadastrosintomadoenca')->name('app.cadastrosintomadoenca.listasintomas');
-    Route::post('/cadastrosintomadoenca/cadastrosintomadoenca/{id}/{sintomaId?}', 'HistoricoVeterinarioController@cadastrosintomadoenca')->name('app.cadastrosintomadoenca.cadastrarSintoma');
-    Route::get('/cadastrosintomadoenca/excluir/{id}', 'HistoricoVeterinarioController@excluir')->name('app.cadastrosintomadoenca.excluir');
+    //Rota cadastrar e listar Sintomas
+    Route::get('/sintoma/{id}','SintomaController@sintomalista')->name('app.ovelha.sintoma');
+    Route::get('/sintoma/adicionarSintoma/{id}', 'SintomaController@adicionarsintoma')->name('app.ovelha.adicionarSintoma');
+    Route::post('/sintoma/adicionarSintoma/{id}', 'SintomaController@adicionarsintoma')->name('app.ovelha.adicionarSintoma'); 
+    Route::post('/sintoma/listarSintoma/{id}', 'SintomaController@sintomalista')->name('app.ovelha.listarSintoma');
+    Route::get('/sintoma/listarSintoma/{id}', 'SintomaController@sintomalista')->name('app.ovelha.listarSintoma');
+    Route::get('/sintoma/editarSintoma/{id}', 'SintomaController@editarSintoma')->name('app.ovelha.editarSintoma');
+    Route::get('/sintoma/excluirSintoma/{id}', 'SintomaController@excluirsintoma')->name('app.ovelha.excluirSintoma');
     
+ 
     });
 
     Route::fallback(function() {

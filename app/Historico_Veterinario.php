@@ -21,7 +21,7 @@ class Historico_Veterinario extends Model
 
     public function ovelha()
     {
-        return $this->belongsTo(Ovelha::class, 'id_ovelha');
+        return $this->belongsTo(Ovelha::class, 'id_ovelha', 'id');
     }
 
 

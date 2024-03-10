@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ovelha;
+use APP\Historico_Veterinario;
 
 class CadastroOvelhasController extends Controller
 {

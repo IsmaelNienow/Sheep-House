@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use SoftDeletes;
 
+
 class Ovelha extends Model
 {
     protected $table = 'ovelhas';
@@ -19,7 +20,7 @@ class Ovelha extends Model
     public function getDataNascimentoAttribute($value)
     {
         return date('d/m/Y', strtotime($value));
-    }
+    }   
 
 }
 
