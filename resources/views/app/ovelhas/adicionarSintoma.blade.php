@@ -19,7 +19,7 @@
         <div class="informacao-pagina">
             {{ $msg ?? '' }}
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
-                <form method="post" action="{{ route('app.ovelhas.adicionarSintoma', ['id' => $ovelha->id ?? '']) }}">
+                <form method="post" action="{{ route('app.ovelhas.adicionarSintoma', ['id_ovelha' => $ovelha->id, 'id' => $sintoma->id ?? '']) }}">
                     <input type="hidden" name="id" value="{{ $sintoma->id ?? '' }}" >
                     @csrf
                     <input type="text" name="sintomas" value="{{ $sintoma->sintomas ?? old('sintoma')}}" placeholder="Sintomas" class="borda-preta">

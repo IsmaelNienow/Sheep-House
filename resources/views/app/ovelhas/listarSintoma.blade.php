@@ -40,10 +40,11 @@
                                 <td>{{ $sintoma->sintomas }}</td>
                                 <td>{{ $sintoma->tratamento }}</td>
                                 <td>{{ $sintoma->data_tratamento }}</td>
-                                <td><a href="{{ route('app.ovelhas.excluirSintoma', ['id' => $sintoma->id]) }}" onclick="return confirm('Tem certeza que deseja excluir este sintoma?')">Excluir</a></td>
-                                <td><a href="{{ route('app.ovelhas.editarSintoma', ['id' => $sintoma->id]) }}" onclick="return confirm('Tem certeza que deseja editar este sintoma?')">Editar</a></td>
-                            </tr>
-                        @endforeach
+                                <td><a href="{{ route('app.ovelhas.excluirSintoma',  $sintoma->id) }}" onclick="return confirm('Tem certeza que deseja excluir este sintoma?')">Excluir</a></td>
+                                <td><a href="{{ route('app.ovelhas.editarSintoma', ['id_ovelha' => $sintoma->id_ovelha, 'id' => $sintoma->id]) }}" onclick="return confirm('Tem certeza que deseja editar este sintoma?')">Editar</a></td>
+                                </tr>
+                        @endforeach 
+                        
                     </tbody>
                 </table>
                 {{ $sintomas->appends($request)->links() }}

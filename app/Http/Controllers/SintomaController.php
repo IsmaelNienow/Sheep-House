@@ -21,9 +21,9 @@ class SintomaController extends Controller
         return view('app.ovelhas.listarSintoma', ['ovelhas' => $ovelhas, 'sintomas' => $sintomas, 'request' => $request->all()]);
     }
     
-    public function adicionarsintoma($id, Request $request){
+    public function adicionarsintoma($id_ovelha, Request $request){
 
-        $ovelha = Ovelha::findOrFail($id);
+        $ovelha = Ovelha::findOrFail($id_ovelha);
         $msg = '';
 
         // Inclusão
@@ -75,25 +75,26 @@ class SintomaController extends Controller
        return view('app.ovelhas.adicionarSintoma', ['ovelha' => $ovelha, 'msg' => $msg]);
     }  
     
-    public function editarsintoma($id, $msg = ''){
+    public function editarsintoma($id_ovelha, $id, $msg = ''){
 
         $sintoma = historico_veterinario::find($id);
-
-        return view('app.ovelhas.adicionarSintoma',['sintomas' => $sintoma, 'msg' => $msg]);
+        $ovelha = Ovelha::find($id_ovelha);
+        
+        return view('app.ovelhas.adicionarSintoma',['sintoma' => $sintoma,'ovelha' => $ovelha, 'msg' => $msg]);
         
     }
     
     public function excluirsintoma($id) {
-        //Ovelha::find($id)->delete();
         $sintoma = historico_veterinario::find($id);
-       // dd($sintoma);
-      if (!$sintoma) {
-            return redirect()->route('app.ovelhas.listarSintoma')->with('erro', 'Sintoma não encontrado.');
-        }
-      else{
-            historico_veterinario::find($id)->forceDelete();
+    
+        if (!$sintoma) {
+            return redirect()->route('app.ovelhas.listarSintoma', ['id_ovelha' => $sintoma->id_ovelha])->with('erro', 'Sintoma não encontrado.');
+        } else {
+            $sintoma->forceDelete();
         }       
-       return redirect()->route('app.ovelhas.listarSintoma', ['id_ovelha' => $sintoma->id_ovelha]);
-     }   
+    
+        return redirect()->route('app.ovelhas.listarSintoma', ['id_ovelha' => $sintoma->id_ovelha]);
+    }
+    
     
 }
