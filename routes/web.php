@@ -56,8 +56,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/sintoma','SintomaController@sintomalista')->name('app.ovelhas.sintoma');
     Route::get('/sintoma/adicionarSintoma/{id_ovelha}', 'SintomaController@adicionarsintoma')->name('app.ovelhas.adicionarSintoma');
     Route::post('/sintoma/adicionarSintoma/{id_ovelha}', 'SintomaController@adicionarsintoma')->name('app.ovelhas.adicionarSintoma'); 
-    Route::post('/sintoma/listarSintoma/{id}', 'SintomaController@sintomalista')->name('app.ovelhas.listarSintoma');
-    Route::get('/sintoma/listarSintoma/{id}', 'SintomaController@sintomalista')->name('app.ovelhas.listarSintoma');
+    Route::post('/sintoma/listarSintoma/{id_ovelha}', 'SintomaController@sintomalista')->name('app.ovelhas.listarSintoma');
+    Route::get('/sintoma/listarSintoma/{id_ovelha}', 'SintomaController@sintomalista')->name('app.ovelhas.listarSintoma');
     Route::get('/sintoma/editarSintoma/{id_ovelha}/{id}', 'SintomaController@editarsintoma')->name('app.ovelhas.editarSintoma');
     Route::get('/sintoma/excluirSintoma/{id}', 'SintomaController@excluirsintoma')->name('app.ovelhas.excluirSintoma');
     

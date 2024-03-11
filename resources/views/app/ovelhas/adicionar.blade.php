@@ -1,13 +1,11 @@
 @extends('app.layouts.basico')
 
-@section('titulo','cadastroovelha')
+@section('titulo', isset($ovelha) ? 'Editar Ovelha' : 'Cadastrar Ovelha')
 
 @section('conteudo')
-
     <div class="conteudo-pagina">
-
         <div class="titulo-pagina-2">
-            <p>Cadastrar Ovelha</p>
+            <p>{{ isset($ovelha) ? 'Editar Ovelha' : 'Cadastrar Ovelha' }}</p>
         </div>
 
         <div class="menu">
@@ -53,11 +51,9 @@
                     <input type="text" name="doente" value="{{ $ovelha->doente ?? old('doente')}}" placeholder="Esta ou possui uma Doença ?" class="borda-preta">
                     {{ $errors->has('doente') ? $errors->first('doente'): ''}}
 
-                    <button type="submit" class="borda-preta">Salvar</button>
-                <form>
+                    <button type="submit" class="borda-preta">{{ isset($ovelha) ? 'Atualizar' : 'Salvar' }}</button>
+                </form>
             </div>
         </div>
-
     </div>
-
 @endsection

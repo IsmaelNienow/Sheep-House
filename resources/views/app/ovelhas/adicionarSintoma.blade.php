@@ -1,18 +1,16 @@
 @extends('app.layouts.basico')
 
-@section('titulo','sintoma')
+@section('titulo', isset($sintoma) ? 'Editar Sintoma' : 'Cadastrar Sintoma')
 
 @section('conteudo')
-
     <div class="conteudo-pagina">
-
         <div class="titulo-pagina-2">
-            <p>Cadastrar Sintoma</p>
+            <p>{{ isset($sintoma) ? 'Editar Sintoma' : 'Cadastrar Sintoma' }}</p>
         </div>
 
         <div class="menu">
             <ul>
-                <a href="{{ route('app.ovelhas.listarSintoma', ['id' => $ovelha->id ?? '']) }}">Voltar para Listagem de Sintomas</a>
+                <a href="{{ route('app.ovelhas.listarSintoma', ['id_ovelha' => $ovelha->id ?? '']) }}">Voltar para Listagem de Sintomas</a>
             </ul>
         </div>
 
@@ -31,11 +29,9 @@
                     <input type="text" name="data_tratamento" value="{{ $sintoma->data_tratamento ?? old('data_tratamento')}}" placeholder="Data do Tratamento" class="borda-preta">
                     {{ $errors->has('data_tratamento') ? $errors->first('data_tratamento'): ''}}
 
-                    <button type="submit" class="borda-preta">Salvar</button>
+                    <button type="submit" class="borda-preta">{{ isset($sintoma) ? 'Atualizar' : 'Salvar' }}</button>
                 </form>
             </div>
         </div>
-
     </div>
-
 @endsection

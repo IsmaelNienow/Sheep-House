@@ -13,10 +13,10 @@ class SintomaController extends Controller
         return view('app.ovelhas.listarSintoma');
     }
     
-    public function sintomalista($id, Request $request) {
+    public function sintomalista($id_ovelha, Request $request) {
 
-        $sintomas = Historico_Veterinario::where('id_ovelha', $id)->paginate(5);
-        $ovelhas = Ovelha::findOrFail($id);
+        $sintomas = Historico_Veterinario::where('id_ovelha', $id_ovelha)->paginate(5);
+        $ovelhas = Ovelha::findOrFail($id_ovelha);
     
         return view('app.ovelhas.listarSintoma', ['ovelhas' => $ovelhas, 'sintomas' => $sintomas, 'request' => $request->all()]);
     }
@@ -54,6 +54,8 @@ class SintomaController extends Controller
 
             // Salvar o sintoma
             $sintoma->save();
+            
+            return redirect()->route('app.ovelhas.listarSintoma', ['id_ovelha' => $sintoma->id_ovelha]);
             $msg = 'Cadastro realizado com sucesso';
             
         }
@@ -63,12 +65,13 @@ class SintomaController extends Controller
             $update = $sintoma->update($request->all());
 
             if($update){
-                $msg = 'Dados atualizados com sucesso';
+               return redirect()->route('app.ovelhas.listarSintoma', ['id_ovelha' => $sintoma->id_ovelha]);
+               $msg = 'Dados atualizados com sucesso';
             } else{
                 $msg = 'Erro ao tentar alterar o registro';
             }
 
-            return redirect()->route('app.ovelhas.editarSintoma', ['id' => $request->input('id'), 'msg' => $msg]);
+            return redirect()->route('app.ovelhas.editarSintoma', ['id_ovelha' =>$id_ovelha, 'id' => $request->input('id'), 'msg' => $msg]);
 
         }
 

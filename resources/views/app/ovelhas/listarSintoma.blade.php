@@ -12,7 +12,7 @@
 
         <div class="menu">
             <ul>
-                <li><a href="{{ route('app.ovelhas.adicionarSintoma', ['id' => optional($ovelhas)->id]) }}">Cadastrar Sintoma</a></li>
+                <li><a href="{{ route('app.ovelhas.adicionarSintoma', ['id_ovelha' => optional($ovelhas)->id]) }}">Cadastrar Sintoma</a></li>
                 <li><a href="{{ route('app.ovelhas.listarDoente')}}">Voltar</a></li>
             </ul>
         </div>
