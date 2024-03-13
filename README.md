@@ -13,6 +13,8 @@ O projeto "Controle de rebanhos de Ovinos" visa desenvolver um software que perm
 
 :heavy_check_mark: - `Controle de animais doentes`: Permitir o controle de animais doentes, seus sintomas e tratamentos aplicados.
 
+:heavy_check_mark: - `Cadastro de Sintomas e Tratamentos`: Permite o cadastro dos sintomas e tratamentos realizados nos ovinos.
+
 :heavy_check_mark: - `Visualização de animais para abate, doentes, abatidos e o plantel`: Facilitar o companhamento do plantel pelos criadores de ovinos.
 
 # Autores
