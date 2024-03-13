@@ -1,5 +1,5 @@
 <h1 align="center"> Aplicação Web para controle de Rebanhos de Ovinos-TCC Pós PUCRS Desenvolvimento Full Stack </h1>
-<p align="center"><img src="'img/ic_menu.png'" width="400"></p>
+<p align="center"><img src="{{ asset('img/ic_menu.png')}}" width="400"></p>
 <p align="center">
 </p>
 
