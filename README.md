@@ -17,7 +17,8 @@ O projeto "Controle de rebanhos de Ovinos" visa desenvolver um software que perm
 
 :heavy_check_mark: - `Visualização de animais para abate, doentes, abatidos e o plantel`: Facilitar o companhamento do plantel pelos criadores de ovinos.
 
-# Autores
+
+# Autor
 
 | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/44347335?v=4" width=115><br><sub>Ismael Henrique Nienow</sub>](https://github.com/IsmaelNienow)
 
