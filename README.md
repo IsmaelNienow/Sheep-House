@@ -1,4 +1,4 @@
-<h1 align="center"><b>Aplicação Web para Controle de Rebanhos de Ovinos</b></h1>
+<h1 align="center"><u>Aplicação Web para controle de Rebanhos de Ovinos-TCC Pós PUCRS Desenvolvimento Full Stack</u></h1>
 <p align="center"><img src="public/img/ic_menu.png" width="40"></p>
 <p align="center">
 </p>
