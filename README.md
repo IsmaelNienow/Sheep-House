@@ -4,7 +4,7 @@
 </p>
 
 # :small_blue_diamond: Sobre o Projeto
-O projeto "Controle de Ovinos" visa desenvolver um software que permita aos criadores de ovinos terem um controle preciso de sua criação, proporcionando informações valiosas sobre cada animal. Com este sistema, os criadores poderão acessar detalhes como sexo, data de nascimento, raça, raça dos pais, histórico de doenças, informações de tratamento veterinário e status de abate dos animais, tudo na palma de suas mãos.
+O projeto "Controle de rebanhos de Ovinos" visa desenvolver um software que permita aos criadores de ovinos terem um controle preciso de sua criação, proporcionando informações valiosas sobre cada animal. Com este sistema, os criadores poderão acessar detalhes como sexo, data de nascimento, raça, raça dos pais, histórico de doenças, informações de tratamento veterinário e status de abate dos animais, tudo na palma de suas mãos.
 
 
 # :hammer: Funcionalidades do projeto
