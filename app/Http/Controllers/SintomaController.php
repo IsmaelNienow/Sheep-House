@@ -15,7 +15,7 @@ class SintomaController extends Controller
     
     public function sintomalista($id_ovelha, Request $request) {
 
-        $sintomas = Historico_Veterinario::where('id_ovelha', $id_ovelha)->paginate(5);
+        $sintomas = Historico_Veterinario::where('id_ovelha', $id_ovelha)->paginate(10);
         $ovelhas = Ovelha::findOrFail($id_ovelha);
     
         return view('app.ovelhas.listarSintoma', ['ovelhas' => $ovelhas, 'sintomas' => $sintomas, 'request' => $request->all()]);

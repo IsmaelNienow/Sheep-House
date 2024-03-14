@@ -25,7 +25,7 @@ class CadastroOvelhasController extends Controller
             ->where('abate', 'like', '%'.$request->input('abate').'%')
             ->where('abatida', 'like', '%'.$request->input('abatida').'%')
             ->where('doente', 'like', '%'.$request->input('doente').'%')        
-            ->paginate(2);
+            ->paginate(10);
             
             return view('app.ovelhas.listar', ['ovelhas' => $ovelhas, 'request' => $request->all() ]);
     }

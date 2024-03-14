@@ -37,8 +37,19 @@
 
         <div class="direita">
             <div class="contato">
-                <h1>Menu Principal</h1>
-                <p>Cadastro de Ovelhas<p>
+                <h1>O Melhor Controle está aqui</h1>
+                <div class="chamada">
+                    <img src="{{ asset('/img/Cadastro.png')}}" style="width: 180px; height: auto;">
+                    <p>
+                        <span class="texto-branco">Gestão completa e descomplicada</span>
+                    </p>
+                </div>
+                <div class="chamada">
+                    <img src="{{ asset('/img/Consulta.png')}}" style="width: 180px; height: auto;">
+                    <p>
+                        <span class="texto-branco">Consultar seus animais de forma descomplicada</span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

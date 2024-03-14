@@ -24,7 +24,7 @@
                     {{ session('erro') }}
                  </div>
                 @endif                
-                <table border="1" width="100%">
+                <table border="5" width="100%">
                     <thead>
                         <tr>
                             <th>Sintoma</th>

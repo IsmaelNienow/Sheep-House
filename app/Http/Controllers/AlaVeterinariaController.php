@@ -15,7 +15,7 @@ class AlaVeterinariaController extends Controller
     public function doentelista(Request $request) {
 
         $ovelhas = Ovelha::where('doente', 'sim')       
-        ->paginate(2);
+        ->paginate(10);
           
       return view('app.ovelhas.listarDoente', ['ovelhas' => $ovelhas, 'request' => $request->all() ]);
     }

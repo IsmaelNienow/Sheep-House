@@ -15,7 +15,7 @@ class AbateController extends Controller
     public function abatelista(Request $request) {
 
         $ovelhas = Ovelha::where('abate', 'sim')       
-        ->paginate(2);
+        ->paginate(10);
           
       return view('app.ovelhas.listarAbate', ['ovelhas' => $ovelhas, 'request' => $request->all() ]);
     }

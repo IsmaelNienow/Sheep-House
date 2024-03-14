@@ -15,7 +15,7 @@ class AbatidaController extends Controller
     public function abatidalista(Request $request) {
 
         $ovelhas = Ovelha::where('abatida', 'sim')       
-        ->paginate(2);
+        ->paginate(10);
           
       return view('app.ovelhas.listarAbatida', ['ovelhas' => $ovelhas, 'request' => $request->all() ]);
     }
