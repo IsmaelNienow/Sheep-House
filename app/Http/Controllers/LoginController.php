@@ -12,6 +12,7 @@ class LoginController extends Controller
             $erro = '';
             if($request->get('erro')==1){
                 $erro = 'Usuário ou senha não existe';
+               
             }
             if($request->get('erro')==2){
                 $erro = 'Necessário realizar login para ter acesso a página';
@@ -26,39 +27,45 @@ class LoginController extends Controller
                 'usuario' => 'email',
                 'senha' => 'required'
             ];
-
+        
             $feedback = [
-                'usuario.email' => 'O campo usuário (e-mail),é obrigatorio',
-                'senha.required' => 'O campo senha é obrigatorio'
+                'usuario.email' => 'O campo usuário (e-mail) é obrigatório',
+                'senha.required' => 'O campo senha é obrigatório'
             ];
-
+        
             $request->validate($regras, $feedback);
-
-            //recuperando os parametros do formulario
+        
+            // Recuperando os parâmetros do formulário
             $email = $request->get('usuario');
             $password = $request->get('senha');
-
-            
-            //iniciar o Model User
-            $user = new User();
-
-            $usuario = $user->where('email', $email)
-                            ->where('password', $password)
-                            ->get()
-                            ->first();
-            if(isset($usuario->name)) {
-                
-                session_start();
-                $_SESSION['nome'] = $usuario->name;
-                $_SESSION['email'] = $usuario->email;
-
-                return redirect()->route('app.home');
-            }else {
-                return redirect()->route('site.login',['erro' => 1]);
+                    
+            // Iniciar o Model User
+            $user = User::where('email', $email)->first();
+        
+            if($user) {
+                // Gerar o hash da senha fornecida pelo usuário
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                dd($hashedPassword);
+                // Verificar se a senha fornecida corresponde ao hash armazenado no banco de dados
+                if(password_verify ($password, $user->password)) {
+                    // Se a senha estiver correta, iniciar a sessão e redirecionar o usuário
+                    print_r($password);
+                    session_start();
+                    $_SESSION['nome'] = $user->name;
+                    $_SESSION['email'] = $user->email;
+        
+                    return redirect()->route('app.home');
+                }
             }
+        
+            // Se o usuário não existir ou a senha estiver incorreta, redirecionar para a página de login com mensagem de erro
+            return redirect()->route('site.login',['erro' => 1]);
         }
+        
+
         public function sair(){
             session_destroy();
             return redirect()->route('site.index');
         }
+      
 }

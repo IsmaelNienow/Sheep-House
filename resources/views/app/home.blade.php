@@ -3,5 +3,13 @@
 @section('titulo','Home')
 
 @section('conteudo')
-    <br><br><br><br>Home
+
+    <div class="conteudo-pagina">
+
+        <div class="titulo-pagina-2">
+            <p>Home</p>
+        </div>   
+
+    </div>
+
 @endsection
